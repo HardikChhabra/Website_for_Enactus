@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   {% include 'bootstrap.html' %}
+    <title>Enactus</title>
+  </head>
+  <body>
+    {% include 'nav.html' %}
+    <div class="container">
+      <div>
+        <img class="img-fluid rounded mx-auto d-block" src="static/Enactus_Full_Color_logo.png" style="height: 200px;">
+      </div>
+      <div class="text-center mt-4">
+        <h1 class="mb-2">Enactus</h1>
+        <h2 style="font-size:20px;">Members</h2>
+        <p class="lead">What would you like to do?</p>
+      </div>
+      <div class="text-center">
+        <a href="/billing" target="_blank"><button type="button" class="btn btn-outline-secondary col-3">Billing</button></a>
+        <a href="/inventory" target="_blank"><button type="button" class="btn btn-outline-secondary col-3">Inventory update</button></a>
+        <a href="/new_product" target="_blank"><button type="button" class="btn btn-outline-secondary col-3">Add new product</button></a>
+      </div>
+      <p class="lead mt-15">Our products</p>
+      <div class="mb-4">
+        {% for i in products %}
+          {% include 'products.html' %}
+        {% endfor %}
+      </div>
+    </div>
+    {% include 'footer.html' %}
+  </body>
+</html>

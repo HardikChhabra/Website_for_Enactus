@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include 'bootstrap.html' %}
+    <title>Billing</title>
+  </head>
+  <body>
+    {% include 'nav.html' %}
+  <div class="container">
+    <h1 class="text-center">Billing</h1>   
+    <h3>Bill form</h3>
+    <form class="row" action="/make_bill/apply" method="post">
+      <div class="input-group mb-2 mt-2">
+        <span class="input-group-text">Full name</span>
+        <input type="text" name="name" class="form-control">
+      </div>
+      <div class="input-group mb-4">
+        <span class="input-group-text">Contact</span>
+        <input type="text" name="contact" class="form-control" placeholder="Email or contact no.">
+      </div>
+      {% for item in products %}
+        <div class="border-bottom mb-4 row">
+          <h4 class="col-4">{{item['product']}}</h4>
+          {% if 'price' in item %}
+            <div class="col-4">
+              Price: {{item['price']}}
+            </div>
+            <div class="col-4">
+              <input style="border-radius: 4px;border-width:1px;" type="number" name="{{item['product']}}" placeholder="Quantity" value=0>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+      <input type="submit" class="btn btn-outline-secondary col-3 mb-2" style="margin-left:12px;">
+    </form>
+    <div><a href="https://docs.google.com/spreadsheets/d/1FENq7bRupUAHY87ju7OrJayerkbCxheN5JBE_Qi-vbk/edit?usp=sharing" target="_blank">
+      <button class="btn btn-outline-secondary col-3" style="padding-right:2px;">Access billing sheet</button></a>
+    </div>
+  </div>
+    {% include 'footer.html' %}
+  </body>
+</html>
+
